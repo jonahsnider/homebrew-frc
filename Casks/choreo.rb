@@ -8,7 +8,7 @@ cask "choreo" do
   url "https://github.com/SleipnirGroup/Choreo/releases/download/v#{version}/Choreo-v#{version}-macOS-#{arch}.dmg",
       verified: "github.com/SleipnirGroup/Choreo/"
   name "Choreo"
-  desc "Time-optimal drivetrain trajectory planner for the FIRST Robotics Competition."
+  desc "Time-optimal drivetrain trajectory planner for the FIRST Robotics Competition"
   homepage "https://choreo.autos/"
 
   depends_on macos: ">= :sonoma"
