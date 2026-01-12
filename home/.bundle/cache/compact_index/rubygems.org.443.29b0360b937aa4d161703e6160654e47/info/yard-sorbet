@@ -1,0 +1,18 @@
+---
+0.0.0 yard:~> 0.9|checksum:99012f9e25d99327d4398a7a24f86d24b4e66dc07e278770ae7123ad52d9366a,ruby:>= 2.4.0
+0.0.1 sorbet-runtime:~> 0.5,yard:~> 0.9|checksum:d4b810f73d3e89b67232ff88637d73514bf372717c7ca2ce3857a3c6d91de5e0,ruby:>= 2.4.0
+0.1.0 sorbet-runtime:>= 0.5,yard:>= 0.9|checksum:1445cd252a6d0e76be38b4e3cfc8f49cceb756959819c0697257699cd1fa5a6b,ruby:>= 2.5.0
+0.2.0 sorbet-runtime:>= 0.5.5845,yard:>= 0.9.16|checksum:5993c5a342d201e1c2102c6a19e7322f1e48172ed54142c67a98eb4d3e2b223a,ruby:>= 2.5.0
+0.3.0 sorbet-runtime:>= 0.5.5845,yard:>= 0.9.16|checksum:8b6234bfa1a265f81a46ebfb097b6bc1957a1764683b04c31226901b525def77,ruby:>= 2.5.0
+0.4.0 sorbet-runtime:>= 0.5.5845,yard:>= 0.9.16|checksum:49ad74fa9f6e4ca2c2747dd47affe48ad01eeade730dd4dd2a4cb00212b9bd87,ruby:>= 2.5.0
+0.4.1 sorbet-runtime:>= 0.5.5845,yard:>= 0.9.16|checksum:a6f9d47fb795bcd864a1cca6e87ad91bcad96c4c9175a4926e2219eed6b51cad,ruby:>= 2.5.0
+0.5.0 sorbet-runtime:>= 0.5.6289,yard:>= 0.9.21|checksum:3f87538e2b02967f1ee44f3e65131e96b1b2ba0950055b06548e76396c03a6f9,ruby:>= 2.5.0
+0.5.1 sorbet-runtime:>= 0.5.5845,yard:>= 0.9.21|checksum:4987915ae9c83e9ff927ca0c3b69c4f8e4396821c819ac5053bf60f32bde8cdb,ruby:>= 2.5.0
+0.5.2 sorbet-runtime:>= 0.5,yard:>= 0.9|checksum:c52b772bee770c8df3779cd10a175bfbb7a50665fda088694a87b884981c56ab,ruby:>= 2.5.0
+0.5.3 sorbet-runtime:>= 0.5,yard:>= 0.9|checksum:4b0795df36203457115da8bc67204a13c10facae9a53155bfa8d64926f163275,ruby:>= 2.5.0
+0.6.0 sorbet-runtime:>= 0.5,yard:>= 0.9|checksum:4d51b9a85c10a27c174bfab82772d35eed33349bae4bbe1e02c0858202c4a69d,ruby:>= 2.5.0
+0.6.1 sorbet-runtime:>= 0.5,yard:>= 0.9|checksum:95b18b3d7511af8d7c4cb3fa64ea6cbd198f2808f7c3611ee4c3ae21e7b75ab6,ruby:>= 2.5.0
+0.7.0 sorbet-runtime:>= 0.5,yard:>= 0.9|checksum:eadaaf720541f091d80f0dc365fa9486c729f88dd1d86c1f5949c97569eeb545,ruby:>= 2.7.0
+0.8.0 sorbet-runtime:>= 0.5,yard:>= 0.9|checksum:20fbfab7face7c4dbf28cde8185a988d0f2fe81f50d6658ad2e9a1c517b14a22,ruby:>= 2.7.0
+0.8.1 sorbet-runtime:>= 0.5,yard:>= 0.9|checksum:d29557f2ab07362acc11521344a2a4afd020a294e71b35ee7c84356c1ced6175,ruby:>= 2.7.0
+0.9.0 sorbet-runtime:>= 0,yard:>= 0|checksum:03d1aa461b9e9c82b886919a13aa3e09fcf4d1852239d2967ed97e92723ffe21,ruby:>= 3.1
