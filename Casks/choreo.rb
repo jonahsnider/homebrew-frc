@@ -11,12 +11,12 @@ cask "choreo" do
   desc "Time-optimal drivetrain trajectory planner for the FIRST Robotics Competition"
   homepage "https://choreo.autos/"
 
-  depends_on macos: ">= :sonoma"
-
   livecheck do
     url :url
     strategy :github_latest
   end
+
+  depends_on macos: ">= :sonoma"
 
   app "Choreo.app"
 
