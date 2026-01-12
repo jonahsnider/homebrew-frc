@@ -1,4 +1,11 @@
-# Jonahsnider Frc
+# Homebrew FRC
+
+A [Homebrew](https://brew.sh/) tap for FRC tools.
+
+## Supported tools
+
+- [PathPlanner](https://pathplanner.dev/home.html)
+  - `brew install jonahsnider/frc/pathplanner`
 
 ## How do I install these formulae?
 
