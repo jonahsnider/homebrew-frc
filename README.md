@@ -10,6 +10,8 @@ A [Homebrew](https://brew.sh/) tap for FRC tools.
   - `brew install jonahsnider/frc/choreo`
 - [Elastic](https://frc-elastic.gitbook.io/docs)
   - `brew install jonahsnider/frc/elastic`
+- [REV Hardware Client 2](https://docs.revrobotics.com/rev-hardware-client-2)
+  - `brew install jonahsnider/frc/rev-hardware-client`
 
 ## How do I install these formulae?
 
