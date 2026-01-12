@@ -6,7 +6,8 @@ cask "wpilib" do
   sha256 arm:   "4839ba17ae1282c988227be56d50d070a2451746c0e41b6bc8aef8c222d94542",
          intel: "2a7914340395538f814cca8bee8d2b592a51b68e6cce004b93ee2d802bb73ca2"
 
-  url "https://packages.wpilib.workers.dev/installer/v#{version}/#{arch}/WPILib_macOS-#{arch_suffix}-#{version}.dmg"
+  url "https://packages.wpilib.workers.dev/installer/v#{version}/#{arch}/WPILib_macOS-#{arch_suffix}-#{version}.dmg",
+      verified: "wpilib.workers.dev/"
   name "WPILib"
   desc "Standard software library provided for FRC teams to write robot code"
   homepage "https://wpilib.org/"
