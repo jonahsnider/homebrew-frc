@@ -1,5 +1,0 @@
----
-0.0.1 abstract_type:~> 0.0.7,adamantium:~> 0.2.0,concord:~> 0.1.5,equalizer:~> 0.0.9,ice_nine:~> 0.11.1,procto:~> 0.0.2|checksum:a5c4e5eb29ec203bec36c63273ec6a463038e518847df3d4a5ad2456318da353
-0.0.2 abstract_type:~> 0.0.7,adamantium:~> 0.2.0,concord:~> 0.1.5,equalizer:~> 0.0.9,ice_nine:~> 0.11.1,procto:~> 0.0.2|checksum:fee2f30cf034c674dad00b876e4d24918426ec3da5d7d043638569ea45d566f9
-0.0.3 abstract_type:~> 0.0.7,adamantium:~> 0.2.0,concord:~> 0.1.5,equalizer:~> 0.0.9,ice_nine:~> 0.11.1,procto:~> 0.0.2|checksum:ba9565559918b20fb2bc4979f17236ff4286150908b499f1d1e3cf88e9987fbb
-0.1.0 abstract_type:~> 0.0.7,adamantium:~> 0.2.0,concord:~> 0.1.5,equalizer:~> 0.0.9,ice_nine:~> 0.11.1,procto:~> 0.0.2|checksum:d851de873ed07eb4b40ffb70f1da3afd5c22f62148a0178a03fe095b49c55dd4
