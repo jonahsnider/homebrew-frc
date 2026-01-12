@@ -6,6 +6,8 @@ A [Homebrew](https://brew.sh/) tap for FRC tools.
 
 - [PathPlanner](https://pathplanner.dev/home.html)
   - `brew install jonahsnider/frc/pathplanner`
+- [Choreo](https://choreo.autos/)
+  - `brew install jonahsnider/frc/choreo`
 
 ## How do I install these formulae?
 
