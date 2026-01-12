@@ -36,9 +36,6 @@ jobs:
       - name: Fix style issues
         run: brew style jonahsnider/frc --fix
 
-      - name: Fix audit issues
-        run: brew audit --except=installed --tap=jonahsnider/frc --fix
-
       - name: Run autofix.ci
         uses: autofix-ci/action@v1
         with:
