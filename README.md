@@ -4,6 +4,8 @@ A [Homebrew](https://brew.sh/) tap for FRC tools.
 
 ## Supported tools
 
+- [WPILib](https://wpilib.org/)
+  - `brew install jonahsnider/frc/wpilib`
 - [PathPlanner](https://pathplanner.dev/home.html)
   - `brew install jonahsnider/frc/pathplanner`
 - [Choreo](https://choreo.autos/)
