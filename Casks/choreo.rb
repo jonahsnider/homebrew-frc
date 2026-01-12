@@ -13,6 +13,11 @@ cask "choreo" do
 
   depends_on macos: ">= :sonoma"
 
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
+
   app "Choreo.app"
 
   zap trash: "~/Library/Application Support/choreo"

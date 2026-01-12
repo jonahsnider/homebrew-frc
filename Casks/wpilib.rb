@@ -14,6 +14,7 @@ cask "wpilib" do
 
   livecheck do
     url "https://github.com/wpilibsuite/allwpilib"
+    strategy :github_latest
   end
 
   installer manual: "WPILibInstaller.app"
