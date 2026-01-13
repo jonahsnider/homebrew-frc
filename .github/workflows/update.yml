@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout Git repository
         uses: actions/checkout@v5
+      - run: brew test-bot --only-cleanup-before
+      - run: brew test-bot --only-setup
       - name: List casks in tap
         id: list-casks
         # List cask files in Casks directory, remove .rb extension, prefix with "jonahsnider/frc/", join with spaces
