@@ -4,18 +4,26 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
 
 jobs:
   update:
     name: Update cask versions
 
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
-      - name: Set up Homebrew
-        uses: Homebrew/actions/setup-homebrew@main
+      - name: List casks in tap
+        id: list-casks
+        # List cask files in Casks directory, remove .rb extension, prefix with "jonahsnider/frc/", join with spaces
+        run: |
+          casks=$(ls Casks | cut -d '.' -f 1 | sed 's/^/jonahsnider\/frc\//' | tr '\n' ' ')
+          echo "casks=$casks" >> $GITHUB_OUTPUT
+      - name: Bump packages
+        uses: Homebrew/actions/bump-packages@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create version bump PRs
-        run: brew bump --open-pr --tap jonahsnider/frc
+          casks: ${{ steps.list-casks.outputs.casks }}
+          fork: false
