@@ -27,8 +27,8 @@ jobs:
         id: list-casks
         # List cask files in Casks directory, remove .rb extension, prefix with "jonahsnider/frc/", join with spaces
         run: |
-          casks=$(ls Casks | cut -d '.' -f 1 | sed 's/^/jonahsnider\/frc\//' | tr '\n' ' ')
-          echo "casks=$casks" >> $GITHUB_OUTPUT
+          casks=$(find Casks -maxdepth 1 -name "*.rb" -type f -exec basename {} .rb \; | sed 's/^/jonahsnider\/frc\//' | tr '\n' ' ')
+          echo "casks=$casks" >> "$GITHUB_OUTPUT"
       - name: Bump packages
         uses: Homebrew/actions/bump-packages@main
         with:
