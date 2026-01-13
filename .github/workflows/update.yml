@@ -1,0 +1,21 @@
+name: Update cask versions
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update:
+    name: Update cask versions
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create version bump PRs
+        run: brew bump --open-pr --tap jonahsnider/frc
