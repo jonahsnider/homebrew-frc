@@ -1,6 +1,6 @@
-cask "pathplanner" do
-  version "2026.1.2"
-  sha256 "2bb90f73e00baff8a4b4608330a45c022ccc39b866e70b25eea638d3e3db201c"
+cask "pathplanner@2025" do
+  version "2025.2.2"
+  sha256 "6382af6400f46a8e616d8847a86b9500ac16f2382c44dfdb03bcc4f547b6014e"
 
   url "https://github.com/mjansen4857/pathplanner/releases/download/v#{version}/PathPlanner-macOS-v#{version}.dmg",
       verified: "github.com/mjansen4857/pathplanner/"
@@ -10,12 +10,19 @@ cask "pathplanner" do
 
   livecheck do
     url :url
-    strategy :git do |tags|
-      tags.map { |tag| tag.delete_prefix("v") }
+    strategy :github_releases do |json|
+      json.map do |release|
+        next if release["draft"]
+
+        version = release["tag_name"].delete_prefix("v")
+        next unless version.start_with?("2025")
+
+        version
+      end
     end
   end
 
-  conflicts_with cask: "pathplanner@2025"
+  conflicts_with cask: "pathplanner"
   # From https://github.com/mjansen4857/pathplanner/blob/main/macos/Podfile
   depends_on macos: ">= :catalina"
 
