@@ -12,7 +12,7 @@ cask "rev-hardware-client" do
 
   livecheck do
     url "https://rhc2.revrobotics.com/download/appcast-#{arch}.rss"
-    strategy :sparkle
+    strategy :sparkle, &:short_version
   end
 
   auto_updates true
