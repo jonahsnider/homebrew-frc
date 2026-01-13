@@ -8,6 +8,13 @@ cask "pathplanner" do
   desc "Simple yet powerful path planning tool for FRC robots"
   homepage "https://pathplanner.dev/home.html"
 
+  livecheck do
+    url :url
+    strategy :git do |tags|
+      tags.map { |tag| tag.delete_prefix("v") }
+    end
+  end
+
   # From https://github.com/mjansen4857/pathplanner/blob/main/macos/Podfile
   depends_on macos: ">= :catalina"
 
