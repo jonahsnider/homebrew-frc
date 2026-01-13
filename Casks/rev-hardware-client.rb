@@ -10,6 +10,8 @@ cask "rev-hardware-client" do
   desc "Configuration and firmware update utility for REV Robotics hardware"
   homepage "https://revrobotics.com/"
 
+  depends_on macos: ">= :sequoia"
+
   livecheck do
     url "https://rhc2.revrobotics.com/download/appcast-#{arch}.rss"
     strategy :sparkle, &:short_version
