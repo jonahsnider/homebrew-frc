@@ -1,6 +1,6 @@
 cask "corvus" do
-  version "26.1.0"
-  sha256 "bb119c4137c2f890dcc4da5f1cfff4b6d10a95a472bfc804b3f78b13313446e8"
+  version "26.1.1"
+  sha256 "a10ccf545056b51a12a2b6cae302f2c7e491233ed7ecfe2b22b9a07a41afd7d9"
 
   url "https://redist.ctr-electronics.com/tools/corvus/#{version}/corvus-#{version}-macosuniversal"
   name "Corvus"
