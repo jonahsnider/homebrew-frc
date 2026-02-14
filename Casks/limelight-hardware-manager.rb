@@ -10,5 +10,10 @@ cask "limelight-hardware-manager" do
   desc "Flash and find Limelight devices"
   homepage "https://limelightvision.io/"
 
+  livecheck do
+    url "https://docs.limelightvision.io/docs/resources/downloads"
+    regex(/Limelight\s+Hardware\s+Manager\s+(\d+(?:\.\d+)+)\s*-\s*APPLE\s+SILICON/i)
+  end
+
   app "Limelight Hardware Manager.app"
 end
