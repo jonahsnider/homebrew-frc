@@ -35,3 +35,11 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           casks: ${{ steps.list-casks.outputs.casks }}
           fork: false
+      - name: Request review on open PRs
+        run: |
+          gh pr list --author "app/github-actions" --state open --json number --jq '.[].number' | while read -r pr; do
+            gh pr edit "$pr" --add-reviewer "$REPO_OWNER" --add-assignee "$REPO_OWNER" || true
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_OWNER: ${{ github.repository_owner }}
