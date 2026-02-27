@@ -11,7 +11,7 @@ GEM
       language_server-protocol (~> 3.17.0)
       prism (>= 1.2, < 2.0)
       rbs (>= 3, < 5)
-    sorbet-runtime (0.6.12966)
+    sorbet-runtime (0.6.12971)
     tsort (0.2.0)
 
 PLATFORMS
