@@ -22,6 +22,8 @@ A [Homebrew](https://brew.sh/) tap for FRC tools.
   - `brew install jonahsnider/frc/owlet`
 - [Passerine](https://docs.ctr-electronics.com/cli-tools.html#passerine)
   - `brew install jonahsnider/frc/passerine`
+- [Dashshund](https://github.com/jonahsnider/dashshund)
+  - `brew install jonahsnider/frc/dashshund`
 
 ## How do I install these formulae?
 
