@@ -1,6 +1,6 @@
 cask "elastic" do
-  version "2026.1.1"
-  sha256 "4161205104a3e4f72954f47da1e2e0623b8274070357cdc1a11b2101bc182f39"
+  version "2026.1.2"
+  sha256 "5f733a6299fe7ddfb127b61beec3ca62e2cfc61205976400bc0c686a2c948bc0"
 
   url "https://github.com/Gold872/elastic_dashboard/releases/download/v#{version}/Elastic-macOS.zip",
       verified: "github.com/Gold872/elastic_dashboard/"
