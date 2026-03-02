@@ -19,4 +19,6 @@ cask "rev-hardware-client" do
   depends_on macos: ">= :sequoia"
 
   app "REV Hardware Client 2.app"
+
+  zap trash: "~/Library/Application Support/REV Robotics REV Hardware Client 2"
 end

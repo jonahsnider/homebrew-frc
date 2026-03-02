@@ -20,4 +20,6 @@ cask "wpilib" do
   installer manual: "WPILibInstaller.app"
 
   uninstall delete: "~/wpilib/#{version.major}"
+
+  zap trash: "~/.wpilib"
 end

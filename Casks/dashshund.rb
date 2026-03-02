@@ -16,4 +16,10 @@ cask "dashshund" do
   depends_on arch: :arm64
 
   app "Dashshund.app"
+
+  zap trash: [
+    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.team581.dashshund.sfl*",
+    "~/Library/Application Support/dashshund",
+    "~/Library/Preferences/com.team581.dashshund.plist",
+  ]
 end

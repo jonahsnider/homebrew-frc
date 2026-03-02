@@ -16,4 +16,6 @@ cask "limelight-hardware-manager" do
   end
 
   app "Limelight Hardware Manager.app"
+
+  zap trash: "~/Library/Preferences/com.limelight.hardwaremanager.plist"
 end
