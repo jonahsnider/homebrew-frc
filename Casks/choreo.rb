@@ -1,9 +1,9 @@
 cask "choreo" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "2026.0.1"
-  sha256 arm:   "eebf0d8afafc331461aae3aec35f37a8625369ba48616f3cdd745283854b84d4",
-         intel: "a1275207b8745dc0d319ff07ee4ce480687eb44c6c76610d8a6c0c88daf3318f"
+  version "2026.0.2"
+  sha256 arm:   "63d5c6240a64be31dcc295b02c01b85b441bc1e1a4b80a6290fb520ad60e58a0",
+         intel: "4350c701633aa6e00829eeb3ece1a94a3cc2b9be70cb6eb96b8d3203aed02f98"
 
   url "https://github.com/SleipnirGroup/Choreo/releases/download/v#{version}/Choreo-v#{version}-macOS-#{arch}.dmg",
       verified: "github.com/SleipnirGroup/Choreo/"
