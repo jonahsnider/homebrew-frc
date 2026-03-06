@@ -13,6 +13,7 @@ cask "dashshund" do
   end
 
   depends_on arch: :arm64
+  depends_on macos: ">= :monterey"
 
   app "Dashshund.app"
 
