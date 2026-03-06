@@ -1,6 +1,6 @@
 cask "dashshund" do
-  version "2026.0.4"
-  sha256 "540a33bcf373fb4aed408dbad8dc687525af9fc74ecb5dbb080106606ea95fbc"
+  version "2026.1.1"
+  sha256 "4009a3fd5c790fe1e0f39cc7f7bd1fbe6b7f79d5a53be27a0581c15c4229eab4"
 
   url "https://github.com/jonahsnider/dashshund/releases/download/v#{version}/Dashshund-#{version}-arm64.dmg"
   name "Dashshund"
