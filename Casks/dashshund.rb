@@ -6,7 +6,6 @@ cask "dashshund" do
          intel: "9525aed68362cc2f0bc65e20a06edd478368c1f0b782af3b2ab2b2da7712d5bc"
 
   url "https://github.com/jonahsnider/dashshund/releases/download/v#{version}/Dashshund-#{version}#{arch}.dmg"
-
   name "Dashshund"
   desc "FRC dashboard for viewing camera streams"
   homepage "https://github.com/jonahsnider/dashshund"
