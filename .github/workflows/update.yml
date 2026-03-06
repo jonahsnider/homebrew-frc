@@ -40,7 +40,7 @@ jobs:
       - name: Request review on open PRs
         run: |
           gh pr list --author "app/github-actions" --state open --json number --jq '.[].number' | while read -r pr; do
-            gh pr edit "$pr" --add-assignee "$REPO_OWNER" || true
+            gh pr edit "$pr" --add-reviewer "$REPO_OWNER" --add-assignee "$REPO_OWNER" || true
           done
         env:
           GH_TOKEN: ${{ github.token }}
