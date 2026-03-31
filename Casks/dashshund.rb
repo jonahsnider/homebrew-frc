@@ -1,9 +1,9 @@
 cask "dashshund" do
   arch arm: "aarch64", intel: "x64"
 
-  version "2026.5.1"
-  sha256 arm:   "6b22e9c75574d9e5d3134e2fb916d3bb36da987f9ca018eab4f5571ae4440d4c",
-         intel: "398974ab22adac9625ca111f566bda9e05c59bfc561c46581e2f404c5775e1a1"
+  version "2026.6.0"
+  sha256 arm:   "6991eb7a7374ad762cf3f7413ca3cd34a9ab6b52d18cc95e556ee8af28f42f95",
+         intel: "c49e244c6868d59e4a1cb63f2654aeaae14b991b53d6cafc7b11db64e555dca2"
 
   url "https://github.com/jonahsnider/dashshund/releases/download/v#{version}/Dashshund_#{version}_#{arch}.dmg"
   name "Dashshund"
