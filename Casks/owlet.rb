@@ -1,6 +1,6 @@
 cask "owlet" do
-  version "26.1.0"
-  sha256 "45eaa6155843f7993b88b92ca355aaa133ff4958e9184bbbe9e422040b837126"
+  version "26.1.3"
+  sha256 "8443bbeeb8990c5feca2adfadc8266818d10815df6a2a35f3fa88d3145572ac4"
 
   url "https://redist.ctr-electronics.com/tools/owlet/#{version}/owlet-#{version}-macosuniversal"
   name "Owlet"
