@@ -16,7 +16,7 @@ cask "rev-hardware-client" do
   end
 
   auto_updates true
-  depends_on macos: ">= :sequoia"
+  depends_on macos: :sequoia
 
   app "REV Hardware Client 2.app"
 

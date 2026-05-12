@@ -17,7 +17,7 @@ cask "pathplanner" do
 
   conflicts_with cask: "pathplanner@2025"
   # From https://github.com/mjansen4857/pathplanner/blob/main/macos/Podfile
-  depends_on macos: ">= :catalina"
+  depends_on macos: :catalina
 
   app "PathPlanner.app"
 

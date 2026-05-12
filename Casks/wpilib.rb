@@ -17,6 +17,8 @@ cask "wpilib" do
     strategy :github_latest
   end
 
+  depends_on :macos
+
   installer manual: "WPILibInstaller.app"
 
   uninstall delete: "~/wpilib/#{version.major}"

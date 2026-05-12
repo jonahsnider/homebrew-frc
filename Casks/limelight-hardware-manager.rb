@@ -15,6 +15,8 @@ cask "limelight-hardware-manager" do
     regex(/Limelight\s+Hardware\s+Manager\s+(\d+(?:\.\d+)+)\s*-\s*APPLE\s+SILICON/i)
   end
 
+  depends_on :macos
+
   app "Limelight Hardware Manager.app"
 
   zap trash: "~/Library/Preferences/com.limelight.hardwaremanager.plist"
