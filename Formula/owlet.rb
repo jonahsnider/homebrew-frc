@@ -1,11 +1,8 @@
-cask "owlet" do
-  version "26.2.0"
-  sha256 "25d4af7022d6bb56b8d8a889fbb814d62cf370b59d560df46de5c72b4979277d"
-
-  url "https://redist.ctr-electronics.com/tools/owlet/#{version}/owlet-#{version}-macosuniversal"
-  name "Owlet"
+class Owlet < Formula
   desc "Convert CTR Electronics hoot (.hoot) files into other logging file formats"
   homepage "https://docs.ctr-electronics.com/cli-tools"
+  url "https://redist.ctr-electronics.com/tools/owlet/26.2.0/owlet-26.2.0-macosuniversal"
+  sha256 "25d4af7022d6bb56b8d8a889fbb814d62cf370b59d560df46de5c72b4979277d"
 
   livecheck do
     url "https://redist.ctr-electronics.com/index.json"
@@ -21,5 +18,13 @@ cask "owlet" do
     end
   end
 
-  binary "owlet-#{version}-macosuniversal", target: "owlet"
+  depends_on :macos
+
+  def install
+    bin.install "owlet-#{version}-macosuniversal" => "owlet"
+  end
+
+  test do
+    assert_predicate bin/"owlet", :executable?
+  end
 end
