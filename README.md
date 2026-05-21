@@ -6,6 +6,8 @@ A [Homebrew](https://brew.sh/) tap for FRC tools.
 
 - [WPILib](https://wpilib.org/)
   - `brew install jonahsnider/frc/wpilib`
+- [FIRST Driver Station](https://github.com/wpilibsuite/FirstDriverStation-Public)
+  - `brew install jonahsnider/frc/first-driver-station`
 - [Limelight Hardware Manager](https://docs.limelightvision.io/docs/resources/downloads)
   - `brew install jonahsnider/frc/limelight-hardware-manager`
 - [PathPlanner](https://pathplanner.dev/home.html)
