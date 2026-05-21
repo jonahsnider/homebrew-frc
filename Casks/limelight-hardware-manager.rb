@@ -12,7 +12,23 @@ cask "limelight-hardware-manager" do
 
   livecheck do
     url "https://docs.limelightvision.io/docs/resources/downloads"
-    regex(/Limelight\s+Hardware\s+Manager\s+(\d+(?:\.\d+)+)\s*-\s*APPLE\s+SILICON/i)
+    strategy :page_match do |page|
+      regex = /LimelightHardwareManager-macOS-AppleSilicon(\d+(?:_\d+)+)\.dmg/i
+      versions = page.scan(regex).map { |m| m.first.tr("_", ".") }
+
+      # The Limelight docs can be stale, so we check the SystemcoreTesting README in case that's more up to date
+      begin
+        require "open-uri"
+        readme = URI.parse(
+          "https://raw.githubusercontent.com/wpilibsuite/SystemcoreTesting/main/README.md",
+        ).open.read
+        versions.concat(readme.scan(regex).map { |m| m.first.tr("_", ".") })
+      rescue
+        nil
+      end
+
+      versions.uniq
+    end
   end
 
   depends_on :macos
