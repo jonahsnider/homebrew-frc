@@ -1,4 +1,4 @@
-name: Update cask versions
+name: Update package versions
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   update:
-    name: Update cask versions
+    name: Update package versions
 
     runs-on: macos-latest
 
@@ -29,11 +29,18 @@ jobs:
         run: |
           casks=$(find Casks -maxdepth 1 -name "*.rb" -type f -exec basename {} .rb \; | sed 's/^/jonahsnider\/frc\//' | tr '\n' ' ')
           echo "casks=$casks" >> "$GITHUB_OUTPUT"
+      - name: List formulae in tap
+        id: list-formulae
+        # List formula files in Formula directory, remove .rb extension, prefix with "jonahsnider/frc/", join with spaces
+        run: |
+          formulae=$(find Formula -maxdepth 1 -name "*.rb" -type f -exec basename {} .rb \; | sed 's/^/jonahsnider\/frc\//' | tr '\n' ' ')
+          echo "formulae=$formulae" >> "$GITHUB_OUTPUT"
       - name: Bump packages
         uses: Homebrew/actions/bump-packages@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           casks: ${{ steps.list-casks.outputs.casks }}
+          formulae: ${{ steps.list-formulae.outputs.formulae }}
           fork: false
       - name: Install GitHub CLI
         run: brew install gh
