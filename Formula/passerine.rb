@@ -1,11 +1,8 @@
-cask "passerine" do
-  version "0.0.1"
-  sha256 "801855cd2bcfaecb3bb3e6bff3a09d193a3a15191637de915f36b0d86e210d6f"
-
-  url "https://redist.ctr-electronics.com/tools/passerine/#{version}/passerine-#{version}-macosuniversal"
-  name "Passerine"
+class Passerine < Formula
   desc "Convert MIDI files into CTR Electronics CHRP (.chrp) files"
   homepage "https://docs.ctr-electronics.com/cli-tools"
+  url "https://redist.ctr-electronics.com/tools/passerine/0.0.1/passerine-0.0.1-macosuniversal"
+  sha256 "801855cd2bcfaecb3bb3e6bff3a09d193a3a15191637de915f36b0d86e210d6f"
 
   livecheck do
     url "https://redist.ctr-electronics.com/index.json"
@@ -21,5 +18,13 @@ cask "passerine" do
     end
   end
 
-  binary "passerine-#{version}-macosuniversal", target: "passerine"
+  depends_on :macos
+
+  def install
+    bin.install "passerine-#{version}-macosuniversal" => "passerine"
+  end
+
+  test do
+    assert_predicate bin/"passerine", :executable?
+  end
 end
