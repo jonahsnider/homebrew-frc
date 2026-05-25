@@ -6,11 +6,8 @@ jobs:
   autofix:
     name: Autofix
 
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
+    container: ghcr.io/homebrew/brew:main
 
     permissions:
       contents: read
@@ -26,8 +23,8 @@ jobs:
         uses: actions/cache@v5
         with:
           path: ${{ steps.set-up-homebrew.outputs.gems-path }}
-          key: ${{ matrix.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
-          restore-keys: ${{ matrix.os }}-rubygems-
+          key: ubuntu-latest-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
+          restore-keys: ubuntu-latest-rubygems-
 
       - run: brew test-bot --only-cleanup-before
 
