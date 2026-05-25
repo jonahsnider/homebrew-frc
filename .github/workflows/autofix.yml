@@ -7,7 +7,6 @@ jobs:
     name: Autofix
 
     runs-on: ubuntu-latest
-    container: ghcr.io/homebrew/brew:main
 
     permissions:
       contents: read
@@ -26,15 +25,8 @@ jobs:
           key: ubuntu-latest-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
           restore-keys: ubuntu-latest-rubygems-
 
-      - run: brew test-bot --only-cleanup-before
-
-      - run: brew test-bot --only-setup
-
       - name: Fix style issues
         run: brew style jonahsnider/frc --fix
-
-      - name: Configure git safe directory
-        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Run autofix.ci
         uses: autofix-ci/action@v1
