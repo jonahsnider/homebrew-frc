@@ -1,8 +1,8 @@
 class Owlet < Formula
   desc "Convert CTR Electronics hoot (.hoot) files into other logging file formats"
   homepage "https://docs.ctr-electronics.com/cli-tools"
-  url "https://redist.ctr-electronics.com/tools/owlet/26.2.0/owlet-26.2.0-macosuniversal"
-  sha256 "25d4af7022d6bb56b8d8a889fbb814d62cf370b59d560df46de5c72b4979277d"
+  url "https://redist.ctr-electronics.com/tools/owlet/26.3.0/owlet-26.3.0-macosuniversal"
+  sha256 "31f2237952c6783427cef11a41985057f2ab64ea30f4beda082bc9f3ae37b089"
 
   livecheck do
     url "https://redist.ctr-electronics.com/index.json"
