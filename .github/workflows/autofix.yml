@@ -30,5 +30,3 @@ jobs:
 
       - name: Run autofix.ci
         uses: autofix-ci/action@v1
-        with:
-          commit-message: "refactor: apply automatic fixes"
