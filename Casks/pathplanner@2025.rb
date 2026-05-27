@@ -10,16 +10,7 @@ cask "pathplanner@2025" do
 
   livecheck do
     url :url
-    strategy :github_releases do |json|
-      json.map do |release|
-        next if release["draft"]
-
-        version = release["tag_name"].delete_prefix("v")
-        next unless version.start_with?("2025")
-
-        version
-      end
-    end
+    regex(/^v?(2025(?:\.\d+)+)$/i)
   end
 
   conflicts_with cask: "pathplanner"
