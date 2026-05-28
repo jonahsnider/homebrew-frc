@@ -10,11 +10,6 @@ cask "dashshund" do
   desc "FRC dashboard for viewing camera streams"
   homepage "https://github.com/jonahsnider/dashshund"
 
-  livecheck do
-    url :url
-    strategy :github_latest
-  end
-
   depends_on macos: :monterey
 
   app "Dashshund.app"
