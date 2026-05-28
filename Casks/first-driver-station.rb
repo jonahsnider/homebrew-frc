@@ -9,9 +9,6 @@ cask "first-driver-station" do
 
   livecheck do
     url :url
-    strategy :git do |tags|
-      tags.map { |tag| tag.delete_prefix("v") }
-    end
   end
 
   depends_on :macos
