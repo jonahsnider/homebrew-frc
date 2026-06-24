@@ -1,6 +1,6 @@
 cask "first-driver-station" do
-  version "2027.0.0-alpha-4"
-  sha256 "ea0952180e577ee888c65a58dfa04d1aa63c1085a90a0b11f79fa77f6cd060e9"
+  version "2027.0.0-alpha-5"
+  sha256 "bde42d62bf9948fe86dd50aadf01986dd250138cb0192b161f1d3a26dc7d16de"
 
   url "https://github.com/wpilibsuite/FirstDriverStation-Public/releases/download/v#{version}/FirstDriverStation-macOS-#{version}.pkg"
   name "FIRST Driver Station"
