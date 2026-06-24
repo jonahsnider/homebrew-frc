@@ -18,6 +18,12 @@ class Corvus < Formula
     end
   end
 
+  bottle do
+    root_url "https://github.com/jonahsnider/homebrew-frc/releases/download/corvus-26.50.0"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe: "390c6507ae4bd6a5412c89f5165aade82506b3756449e4983c44fa0c8cec49fb"
+    sha256 cellar: :any_skip_relocation, sequoia:     "1d4b4c08a0f91bf63a05e231bab9e223127fd3312bd2d662f58524fffdeb1e6c"
+  end
+
   on_linux do
     on_intel do
       url "https://redist.ctr-electronics.com/tools/corvus/26.1.3/corvus-26.1.3-linuxx86-64"
