@@ -157,5 +157,5 @@ jobs:
           gh pr merge "$PULL_REQUEST" \
             --repo "${{ github.repository }}" \
             --auto \
-            --rebase \
+            --squash \
             --match-head-commit "$EXPECTED_SHA"
