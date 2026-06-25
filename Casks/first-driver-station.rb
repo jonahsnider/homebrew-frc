@@ -13,7 +13,7 @@ cask "first-driver-station" do
 
   depends_on :macos
 
-  pkg "FirstDriverStation-macOS-universal-#{version}.pkg"
+  pkg "FirstDriverStation-macOS-#{version}.pkg"
 
   uninstall pkgutil: "org.wpilib.firstdriverstation"
 
