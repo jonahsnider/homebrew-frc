@@ -1,9 +1,11 @@
 cask "limelight-hardware-manager" do
   arch arm: "AppleSilicon", intel: "Intel"
 
-  version "2.0.7"
-  sha256 arm:   "497341631ea53120417dee88659c48fc2a094e0312c2e372ab632ef4f58e4f05",
-         intel: "bcafb7dcbc189890794deec7003e2e56fe25f469fba3a29bf2f492f2f86cd84d"
+  version "2.0.10"
+  sha256 arm:          "23d208cf628d67b26b0426ecb720a659caf867c6116d2f192462006d0406d79b",
+         intel:        "b1b7304fd71142768c5206057881784f017e40cb1ca2b2512224d3df601ae76b",
+         x86_64_linux: "b1b7304fd71142768c5206057881784f017e40cb1ca2b2512224d3df601ae76b",
+         arm64_linux:  "23d208cf628d67b26b0426ecb720a659caf867c6116d2f192462006d0406d79b"
 
   url "https://downloads.limelightvision.io/software/LimelightHardwareManager-macOS-#{arch}#{version.dots_to_underscores}.dmg"
   name "Limelight Hardware Manager"
