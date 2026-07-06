@@ -2,6 +2,7 @@ cask "limelight-hardware-manager" do
   arch arm: "AppleSilicon", intel: "Intel"
 
   version "2.0.10"
+
   on_macos do
     sha256 arm:   "23d208cf628d67b26b0426ecb720a659caf867c6116d2f192462006d0406d79b",
            intel: "b1b7304fd71142768c5206057881784f017e40cb1ca2b2512224d3df601ae76b"
