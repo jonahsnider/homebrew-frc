@@ -13,7 +13,23 @@ class ChoreoCli < Formula
   depends_on "cmake" => :build
   depends_on "rust" => :build
 
+  on_linux do
+    depends_on "gcc@14" => :build if DevelopmentTools.gcc_version < 14
+  end
+
+  fails_with :gcc do
+    version "13"
+    cause "Requires C++23 <print>"
+  end
+
   def install
+    if OS.linux? && deps.map(&:name).any?("gcc@14")
+      ENV.method(:"gcc-14").call
+
+      libgcc = Pathname.new(Utils.safe_popen_read(ENV.cc, "-print-libgcc-file-name")).parent
+      ENV.append "CXX", "-specs=#{libgcc}/specs.orig"
+    end
+
     system "cargo", "install", *std_cargo_args(path: "src-cli")
   end
 
