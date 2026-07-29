@@ -7,18 +7,6 @@ cask "elastic" do
     url "https://github.com/Gold872/elastic_dashboard/releases/download/v#{version}/Elastic-macOS.zip",
         verified: "github.com/Gold872/elastic_dashboard/"
   end
-
-  on_linux do
-    sha256 "6103b70fe1788cee4929916f8f8b9987efe3cf469aaf122f47cecfb83f6267c1"
-
-    url "https://github.com/Gold872/elastic_dashboard/releases/download/v#{version}/Elastic-Linux.zip",
-        verified: "github.com/Gold872/elastic_dashboard/"
-  end
-
-  name "Elastic Dashboard"
-  desc "Simple and modern dashboard for FRC"
-  homepage "https://frc-elastic.gitbook.io/docs"
-
   on_macos do
     depends_on macos: :catalina
 
@@ -29,10 +17,19 @@ cask "elastic" do
       "~/Library/Containers/com.gold872.elasticDashboard",
     ]
   end
+  on_linux do
+    sha256 "6103b70fe1788cee4929916f8f8b9987efe3cf469aaf122f47cecfb83f6267c1"
 
+    url "https://github.com/Gold872/elastic_dashboard/releases/download/v#{version}/Elastic-Linux.zip",
+        verified: "github.com/Gold872/elastic_dashboard/"
+  end
   on_linux do
     depends_on arch: :x86_64
 
     binary "elastic_dashboard", target: "elastic"
   end
+
+  name "Elastic Dashboard"
+  desc "Simple and modern dashboard for FRC"
+  homepage "https://frc-elastic.gitbook.io/docs"
 end
