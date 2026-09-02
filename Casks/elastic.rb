@@ -4,8 +4,7 @@ cask "elastic" do
   on_macos do
     sha256 "5f733a6299fe7ddfb127b61beec3ca62e2cfc61205976400bc0c686a2c948bc0"
 
-    url "https://github.com/Gold872/elastic_dashboard/releases/download/v#{version}/Elastic-macOS.zip",
-        verified: "github.com/Gold872/elastic_dashboard/"
+    url "https://github.com/Gold872/elastic_dashboard/releases/download/v#{version}/Elastic-macOS.zip"
   end
   on_macos do
     depends_on macos: :catalina
@@ -20,8 +19,7 @@ cask "elastic" do
   on_linux do
     sha256 "6103b70fe1788cee4929916f8f8b9987efe3cf469aaf122f47cecfb83f6267c1"
 
-    url "https://github.com/Gold872/elastic_dashboard/releases/download/v#{version}/Elastic-Linux.zip",
-        verified: "github.com/Gold872/elastic_dashboard/"
+    url "https://github.com/Gold872/elastic_dashboard/releases/download/v#{version}/Elastic-Linux.zip"
   end
   on_linux do
     depends_on arch: :x86_64
