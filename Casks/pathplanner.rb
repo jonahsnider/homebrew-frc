@@ -7,9 +7,6 @@ cask "pathplanner" do
     url "https://github.com/mjansen4857/pathplanner/releases/download/v#{version}/PathPlanner-macOS-v#{version}.dmg"
   end
   on_macos do
-    # From https://github.com/mjansen4857/pathplanner/blob/main/macos/Podfile
-    depends_on macos: :catalina
-
     app "PathPlanner.app"
 
     zap trash: [

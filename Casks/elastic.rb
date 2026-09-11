@@ -7,8 +7,6 @@ cask "elastic" do
     url "https://github.com/Gold872/elastic_dashboard/releases/download/v#{version}/Elastic-macOS.zip"
   end
   on_macos do
-    depends_on macos: :catalina
-
     app "elastic_dashboard.app", target: "Elastic.app"
 
     zap trash: [
