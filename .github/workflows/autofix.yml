@@ -1,6 +1,6 @@
 name: autofix.ci
 
-on: [push, pull_request]
+on: pull_request
 
 jobs:
   autofix:
@@ -26,7 +26,8 @@ jobs:
           restore-keys: ubuntu-latest-rubygems-
 
       - name: Fix style issues
-        run: brew style jonahsnider/frc --fix
+        # Keep RuboCop's Markdown preprocessing from rewriting README.md.
+        run: brew style --fix Casks/*.rb Formula/*.rb
 
       - name: Run autofix.ci
         uses: autofix-ci/action@v1
