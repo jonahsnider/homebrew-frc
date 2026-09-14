@@ -4,15 +4,24 @@ on:
   push:
     branches:
       - main
+    paths:
+      - .github/workflows/update.yml
   schedule:
-    - cron: "0 0 * * *"
+    # Every day at 7:35 UTC
+    - cron: "35 7 * * *"
   workflow_dispatch:
+
+permissions: {}
+
+defaults:
+  run:
+    shell: bash -xeuo pipefail {0}
 
 jobs:
   update:
     name: Update package versions
 
-    runs-on: macos-latest
+    runs-on: macos-26
 
     permissions:
       contents: write
@@ -21,16 +30,14 @@ jobs:
     steps:
       - name: Generate GitHub App token
         id: app-token
-        uses: actions/create-github-app-token@v3.2.0
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
           client-id: ${{ vars.BREW_COMMIT_CLIENT_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
-      - name: Checkout Git repository
-        uses: actions/checkout@v7
-      - run: brew test-bot --only-cleanup-before
-      - run: brew test-bot --only-setup
-      - name: Trust tap
-        run: brew trust jonahsnider/frc
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@1e34f2e2acaa766b7efacb8c26352e6abbb023f9 # 2026.09.13.1
+        with:
+          token: ${{ steps.app-token.outputs.token }}
       - name: List casks in tap
         id: list-casks
         # List cask files in Casks directory, remove .rb extension, prefix with "jonahsnider/frc/", join with spaces
@@ -44,7 +51,7 @@ jobs:
           formulae=$(find Formula -maxdepth 1 -name "*.rb" -type f -exec basename {} .rb \; | sed 's/^/jonahsnider\/frc\//' | tr '\n' ' ')
           echo "formulae=$formulae" >> "$GITHUB_OUTPUT"
       - name: Bump packages
-        uses: Homebrew/actions/bump-packages@main
+        uses: Homebrew/actions/bump-packages@1e34f2e2acaa766b7efacb8c26352e6abbb023f9 # 2026.09.13.1
         with:
           token: ${{ steps.app-token.outputs.token }}
           casks: ${{ steps.list-casks.outputs.casks }}
