@@ -1,10 +1,10 @@
 cask "first-driver-station" do
   arch arm: "arm64", intel: "x64"
 
-  version "2027.0.0-alpha-7"
+  version "2027.0.0-alpha-8"
 
   on_macos do
-    sha256 "5dba7a37f6022b8e9146b0e5a541334fe8474fd41deb924c8dfa80590f6cedec"
+    sha256 "63458b38c5eb95908b797061a5a593ef534115384812bce9379cb6383b457e0d"
 
     url "https://github.com/wpilibsuite/FirstDriverStation-Public/releases/download/v#{version}/FirstDriverStation-macOS-#{version}.pkg"
   end
@@ -16,8 +16,8 @@ cask "first-driver-station" do
     zap trash: "~/Library/Preferences/org.wpilib.firstdriverstation.plist"
   end
   on_linux do
-    sha256 arm64_linux:  "0f11f558db3a5c92c73e0d07075a5a3fcfb4c3cfa5a64f988fc0416570c7937d",
-           x86_64_linux: "70a9eef1915ef10a85114d8305e94b026b1de95bd85e06f82dffd0186fb9146c"
+    sha256 arm64_linux:  "0280842fb55f4f8b489c6a11776b4007df29b984a42c76611fa26d9f05686083",
+           x86_64_linux: "abc006cc9b6a901977838838377a665a96b102f19aedeb4a168ebc6726e73506"
 
     url "https://github.com/wpilibsuite/FirstDriverStation-Public/releases/download/v#{version}/FirstDriverStation-linux-#{arch}-#{version}.tar.gz"
   end
