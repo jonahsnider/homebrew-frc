@@ -1,8 +1,8 @@
 class Corvus < Formula
   desc "Generate mechanisms for CTR Electronics devices"
   homepage "https://docs.ctr-electronics.com/cli-tools"
-  url "https://redist.ctr-electronics.com/tools/corvus/26.50.0/corvus-26.50.0-macosuniversal"
-  sha256 "901b3bfd046b3319889b30f1c399e6f6b16feb0350b98d9969970b9b26debc55"
+  url "https://redist.ctr-electronics.com/tools/corvus/26.70.0/corvus-26.70.0-macosuniversal"
+  sha256 "7d0111864218007cb731a52f21c4d4c9e21543f001539a6eb92b28db51719469"
 
   livecheck do
     url "https://redist.ctr-electronics.com/index.json"
