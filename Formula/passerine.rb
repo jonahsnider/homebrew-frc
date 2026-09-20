@@ -20,6 +20,12 @@ class Passerine < Formula
     end
   end
 
+  bottle do
+    root_url "https://github.com/jonahsnider/homebrew-frc/releases/download/passerine-0.0.1_1"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "2d191e0bcea7a8940c173fdf4122c509872d151f8548289e7218785d5a0cc962"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "361b6c3a96bcfe3b6e61579f562d115c43293ddede7ea0d33b5091477707daa9"
+  end
+
   on_linux do
     on_intel do
       url "https://redist.ctr-electronics.com/tools/passerine/0.0.1/passerine-0.0.1-linuxx86-64?version=0.0.1"
