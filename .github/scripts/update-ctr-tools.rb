@@ -23,10 +23,11 @@ class CtrToolsUpdater
 
       contents.scan(/^([ \t]*)url "([^"]+)"\n\1sha256 "([0-9a-f]{64})"/) do |indent, url, sha256|
         match = Regexp.last_match
-        prefix = "https://redist.ctr-electronics.com/tools/#{name}/"
-        next unless url.start_with?(prefix)
+        uri = URI(url)
+        prefix = "/tools/#{name}/"
+        next if uri.host != "redist.ctr-electronics.com" || !uri.path.start_with?(prefix)
 
-        version, filename = url.delete_prefix(prefix).split("/", 2)
+        version, filename = uri.path.delete_prefix(prefix).split("/", 2)
         platform = PLATFORMS.find { |candidate| filename == "#{name}-#{version}-#{candidate}" }
         next unless platform
 
@@ -86,11 +87,26 @@ class CtrToolsUpdater
       Digest::SHA256.hexdigest(fetch(url))
     end
 
+    def formula_url(url, version, platform)
+      return url if platform == "macosuniversal"
+
+      "#{url}?version=#{version}"
+    end
+
     def check
       TOOLS.each do |name|
         assets = formula_assets(name, File.read(formula_path(name)))
         versions = assets.values.map { |asset| asset.fetch(:version) }.uniq
         raise "#{name}: platform versions differ: #{versions.join(", ")}" unless versions.one?
+
+        assets.each do |platform, asset|
+          next if platform == "macosuniversal"
+
+          query_version = URI.decode_www_form(URI(asset.fetch(:url)).query.to_s).to_h["version"]
+          next if query_version == versions.first
+
+          raise "#{name}: #{platform} URL must declare version=#{versions.first}"
+        end
       end
 
       puts "CTR tool platform versions match"
@@ -106,11 +122,16 @@ class CtrToolsUpdater
         assets = formula_assets(name, contents)
         release = latest_release(index, name)
         version = release.fetch("Version")
-        next if assets.values.all? { |asset| asset.fetch(:version) == version }
+        expected_urls = PLATFORMS.to_h do |platform|
+          [platform, formula_url(release.fetch("Urls").fetch(platform), version, platform)]
+        end
+        next if assets.all? do |platform, asset|
+          asset.fetch(:version) == version && asset.fetch(:url) == expected_urls.fetch(platform)
+        end
 
         PLATFORMS.each do |platform|
           asset = assets.fetch(platform)
-          url = release.fetch("Urls").fetch(platform)
+          url = expected_urls.fetch(platform)
           replacement = <<~FORMULA.chomp
             #{asset.fetch(:indent)}url "#{url}"
             #{asset.fetch(:indent)}sha256 "#{sha256(url)}"
