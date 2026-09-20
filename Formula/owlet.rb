@@ -1,8 +1,9 @@
 class Owlet < Formula
   desc "Convert CTR Electronics hoot (.hoot) files into other logging file formats"
   homepage "https://docs.ctr-electronics.com/cli-tools"
-  url "https://redist.ctr-electronics.com/tools/owlet/26.3.0/owlet-26.3.0-macosuniversal"
-  sha256 "31f2237952c6783427cef11a41985057f2ab64ea30f4beda082bc9f3ae37b089"
+  url "https://redist.ctr-electronics.com/tools/owlet/26.70.0/owlet-26.70.0-macosuniversal"
+  sha256 "fcdc1f6fd51758ecc6bc9d5a7bd5b201a35518904c94db44e1a2c7f5b40359a2"
+  version_scheme 1
 
   livecheck do
     url "https://redist.ctr-electronics.com/index.json"
@@ -18,15 +19,21 @@ class Owlet < Formula
     end
   end
 
+  bottle do
+    root_url "https://github.com/jonahsnider/homebrew-frc/releases/download/owlet-26.70.0"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "238acc26922dd12432501a7f8affc0fa4fd39f38abe0196ce874368e6fb58378"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "bdaff24832ce47899b55f5795e8e8c77403c755ac850e1ce96e48cc287c5ab5b"
+  end
+
   on_linux do
     on_intel do
-      url "https://redist.ctr-electronics.com/tools/owlet/26.2.0/owlet-26.2.0-linuxx86-64"
-      sha256 "465745e395bd7474092b55b222d6ff12aa137873a553c446c76b5dea492c5ac4"
+      url "https://redist.ctr-electronics.com/tools/owlet/26.70.0/owlet-26.70.0-linuxx86-64?version=26.70.0"
+      sha256 "081b0a122296fd12e845553f161446fefe16891f0bdc44d8679edb4785a99baa"
     end
 
     on_arm do
-      url "https://redist.ctr-electronics.com/tools/owlet/26.2.0/owlet-26.2.0-linuxarm64"
-      sha256 "61187892eb6c5dc894fbc39ab074ff1d11604b90b3c29ad134385ce8e0699ec8"
+      url "https://redist.ctr-electronics.com/tools/owlet/26.70.0/owlet-26.70.0-linuxarm64?version=26.70.0"
+      sha256 "37efd5519ca9b017b9cc0242e4c0a531400566566415865751012feb84059adc"
     end
   end
 
