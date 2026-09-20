@@ -11,6 +11,7 @@ class CtrToolsUpdater
   ROOT = File.expand_path("../..", __dir__).freeze
   INDEX_URL = "https://redist.ctr-electronics.com/index.json"
   PLATFORMS = %w[macosuniversal linuxx86-64 linuxarm64].freeze
+  REVISION_OVERRIDES = { "passerine@0.0.1" => 1 }.freeze
   TOOLS = %w[corvus owlet passerine].freeze
   VERSION_SCHEME = 1
 
@@ -21,6 +22,10 @@ class CtrToolsUpdater
 
     def version_scheme_current?(contents)
       contents.lines(chomp: true).include?("  version_scheme #{VERSION_SCHEME}")
+    end
+
+    def formula_revision(contents)
+      contents[/^  revision (\d+)$/, 1].to_i
     end
 
     def formula_assets(name, contents)
@@ -106,6 +111,9 @@ class CtrToolsUpdater
         raise "#{name}: platform versions differ: #{versions.join(", ")}" unless versions.one?
         raise "#{name}: version_scheme must be #{VERSION_SCHEME}" unless version_scheme_current?(contents)
 
+        expected_revision = REVISION_OVERRIDES.fetch("#{name}@#{versions.first}", 0)
+        raise "#{name}: revision must be #{expected_revision}" if formula_revision(contents) != expected_revision
+
         assets.each do |platform, asset|
           next if platform == "macosuniversal"
 
@@ -132,10 +140,12 @@ class CtrToolsUpdater
         expected_urls = PLATFORMS.to_h do |platform|
           [platform, formula_url(release.fetch("Urls").fetch(platform), version, platform)]
         end
+        expected_revision = REVISION_OVERRIDES.fetch("#{name}@#{version}", 0)
         urls_current = assets.all? do |platform, asset|
           asset.fetch(:version) == version && asset.fetch(:url) == expected_urls.fetch(platform)
         end
-        next if urls_current && version_scheme_current?(contents)
+        revision_current = formula_revision(contents) == expected_revision
+        next if urls_current && version_scheme_current?(contents) && revision_current
 
         PLATFORMS.each do |platform|
           asset = assets.fetch(platform)
@@ -150,6 +160,14 @@ class CtrToolsUpdater
         unless contents.match?(/^  version_scheme /)
           updated = contents.sub!(/^  sha256 "[0-9a-f]{64}"\n/, "\\0  version_scheme #{VERSION_SCHEME}\n")
           raise "#{name}: missing top-level sha256" unless updated
+        end
+
+        if expected_revision.zero?
+          contents.sub!(/^  revision \d+\n/, "")
+        elsif contents.match?(/^  revision \d+$/)
+          contents.sub!(/^  revision \d+$/, "  revision #{expected_revision}")
+        else
+          contents.sub!(/^  version_scheme /, "  revision #{expected_revision}\n\\0")
         end
 
         contents.sub!(/\n  bottle do\n.*?^  end\n/m, "\n")
