@@ -12,10 +12,15 @@ class CtrToolsUpdater
   INDEX_URL = "https://redist.ctr-electronics.com/index.json"
   PLATFORMS = %w[macosuniversal linuxx86-64 linuxarm64].freeze
   TOOLS = %w[corvus owlet passerine].freeze
+  VERSION_SCHEME = 1
 
   class << self
     def formula_path(name)
       File.join(ROOT, "Formula", "#{name}.rb")
+    end
+
+    def version_scheme_current?(contents)
+      contents.lines(chomp: true).include?("  version_scheme #{VERSION_SCHEME}")
     end
 
     def formula_assets(name, contents)
@@ -95,9 +100,11 @@ class CtrToolsUpdater
 
     def check
       TOOLS.each do |name|
-        assets = formula_assets(name, File.read(formula_path(name)))
+        contents = File.read(formula_path(name))
+        assets = formula_assets(name, contents)
         versions = assets.values.map { |asset| asset.fetch(:version) }.uniq
         raise "#{name}: platform versions differ: #{versions.join(", ")}" unless versions.one?
+        raise "#{name}: version_scheme must be #{VERSION_SCHEME}" unless version_scheme_current?(contents)
 
         assets.each do |platform, asset|
           next if platform == "macosuniversal"
@@ -125,9 +132,10 @@ class CtrToolsUpdater
         expected_urls = PLATFORMS.to_h do |platform|
           [platform, formula_url(release.fetch("Urls").fetch(platform), version, platform)]
         end
-        next if assets.all? do |platform, asset|
+        urls_current = assets.all? do |platform, asset|
           asset.fetch(:version) == version && asset.fetch(:url) == expected_urls.fetch(platform)
         end
+        next if urls_current && version_scheme_current?(contents)
 
         PLATFORMS.each do |platform|
           asset = assets.fetch(platform)
@@ -137,6 +145,11 @@ class CtrToolsUpdater
             #{asset.fetch(:indent)}sha256 "#{sha256(url)}"
           FORMULA
           contents.sub!(asset.fetch(:full_match), replacement)
+        end
+
+        unless contents.match?(/^  version_scheme /)
+          updated = contents.sub!(/^  sha256 "[0-9a-f]{64}"\n/, "\\0  version_scheme #{VERSION_SCHEME}\n")
+          raise "#{name}: missing top-level sha256" unless updated
         end
 
         contents.sub!(/\n  bottle do\n.*?^  end\n/m, "\n")
