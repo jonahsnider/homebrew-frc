@@ -19,7 +19,6 @@ class Corvus < Formula
     end
   end
 
-
   on_linux do
     on_intel do
       url "https://redist.ctr-electronics.com/tools/corvus/26.70.0/corvus-26.70.0-linuxx86-64?version=26.70.0"
