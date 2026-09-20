@@ -9,7 +9,7 @@ class Corvus < Formula
     url "https://redist.ctr-electronics.com/index.json"
     strategy :json do |json|
       json["Tools"]&.find { |t| t["Name"] == "corvus" }&.dig("Items")&.filter_map do |item|
-        next unless item["Urls"]&.key?("macosuniversal")
+        next unless %w[macosuniversal linuxx86-64 linuxarm64].all? { |platform| item["Urls"]&.key?(platform) }
 
         version = item["Version"]
         next if version&.match?(/alpha|beta/i)

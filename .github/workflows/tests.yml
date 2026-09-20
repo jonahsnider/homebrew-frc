@@ -43,6 +43,9 @@ jobs:
           key: ${{ matrix.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
           restore-keys: ${{ matrix.os }}-rubygems-
 
+      - name: Check CTR tool platform versions
+        run: ruby .github/scripts/update-ctr-tools.rb --check
+
       - run: brew test-bot --only-cleanup-before
 
       - run: brew test-bot --only-setup
