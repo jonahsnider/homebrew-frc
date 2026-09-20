@@ -46,9 +46,9 @@ jobs:
           echo "casks=$casks" >> "$GITHUB_OUTPUT"
       - name: List formulae in tap
         id: list-formulae
-        # List formula files in Formula directory, remove .rb extension, prefix with "jonahsnider/frc/", join with spaces
+        # CTR formulae are updated together by the update-ctr-tools job.
         run: |
-          formulae=$(find Formula -maxdepth 1 -name "*.rb" -type f -exec basename {} .rb \; | sed 's/^/jonahsnider\/frc\//' | tr '\n' ' ')
+          formulae=$(find Formula -maxdepth 1 -name "*.rb" -type f ! -name "corvus.rb" ! -name "owlet.rb" ! -name "passerine.rb" -exec basename {} .rb \; | sed 's/^/jonahsnider\/frc\//' | tr '\n' ' ')
           echo "formulae=$formulae" >> "$GITHUB_OUTPUT"
       - name: Bump packages
         uses: Homebrew/actions/bump-packages@1e34f2e2acaa766b7efacb8c26352e6abbb023f9 # 2026.09.13.1
@@ -57,3 +57,50 @@ jobs:
           casks: ${{ steps.list-casks.outputs.casks }}
           formulae: ${{ steps.list-formulae.outputs.formulae }}
           fork: false
+
+  update-ctr-tools:
+    name: Update CTR tools
+
+    runs-on: macos-26
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.BREW_COMMIT_CLIENT_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@1e34f2e2acaa766b7efacb8c26352e6abbb023f9 # 2026.09.13.1
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+      - name: Update CTR tools
+        id: update-ctr-tools
+        run: ruby .github/scripts/update-ctr-tools.rb
+      - name: Create pull request
+        if: steps.update-ctr-tools.outputs.updated == 'true'
+        env:
+          BRANCH_SUFFIX: ${{ steps.update-ctr-tools.outputs.branch_suffix }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          UPDATE_SUMMARY: ${{ steps.update-ctr-tools.outputs.summary }}
+        run: |
+          branch="bump-ctr-tools-$BRANCH_SUFFIX"
+          if [[ "$(gh pr list --head "$branch" --state open --json number --jq 'length')" != "0" ]]; then
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add Formula/corvus.rb Formula/owlet.rb Formula/passerine.rb
+          git commit -m "Update CTR tools: $UPDATE_SUMMARY"
+          git push --set-upstream origin "$branch"
+          gh pr create \
+            --base main \
+            --head "$branch" \
+            --title "Update CTR tools: $UPDATE_SUMMARY" \
+            --body "Updates every supported CTR platform from the upstream release index."
