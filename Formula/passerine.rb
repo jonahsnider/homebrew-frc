@@ -3,6 +3,7 @@ class Passerine < Formula
   homepage "https://docs.ctr-electronics.com/cli-tools"
   url "https://redist.ctr-electronics.com/tools/passerine/0.0.1/passerine-0.0.1-macosuniversal"
   sha256 "801855cd2bcfaecb3bb3e6bff3a09d193a3a15191637de915f36b0d86e210d6f"
+  version_scheme 1
 
   livecheck do
     url "https://redist.ctr-electronics.com/index.json"
@@ -20,12 +21,12 @@ class Passerine < Formula
 
   on_linux do
     on_intel do
-      url "https://redist.ctr-electronics.com/tools/passerine/0.0.1/passerine-0.0.1-linuxx86-64"
+      url "https://redist.ctr-electronics.com/tools/passerine/0.0.1/passerine-0.0.1-linuxx86-64?version=0.0.1"
       sha256 "4eb2b763163d0def9191d6842c8f73d4d9cb7d7b24cbd6c5aaba9e2ffebb2f44"
     end
 
     on_arm do
-      url "https://redist.ctr-electronics.com/tools/passerine/0.0.1/passerine-0.0.1-linuxarm64"
+      url "https://redist.ctr-electronics.com/tools/passerine/0.0.1/passerine-0.0.1-linuxarm64?version=0.0.1"
       sha256 "82aa1e476ae65b0569bcc0e21cef24fb735deeb9ed74c12d160f22451b191440"
     end
   end
