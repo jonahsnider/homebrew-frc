@@ -44,7 +44,7 @@ jobs:
           restore-keys: ${{ matrix.os }}-rubygems-
 
       - name: Check CTR tool platform versions
-        run: brew ruby .github/scripts/update-ctr-tools.rb -- --check
+        run: brew ruby "$PWD/.github/scripts/update-ctr-tools.rb" -- --check
 
       - run: brew test-bot --only-cleanup-before
 
