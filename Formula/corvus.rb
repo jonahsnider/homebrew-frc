@@ -1,8 +1,8 @@
 class Corvus < Formula
   desc "Generate mechanisms for CTR Electronics devices"
   homepage "https://docs.ctr-electronics.com/cli-tools"
-  url "https://redist.ctr-electronics.com/tools/corvus/26.50.0/corvus-26.50.0-macosuniversal"
-  sha256 "901b3bfd046b3319889b30f1c399e6f6b16feb0350b98d9969970b9b26debc55"
+  url "https://redist.ctr-electronics.com/tools/corvus/26.70.0/corvus-26.70.0-macosuniversal"
+  sha256 "7d0111864218007cb731a52f21c4d4c9e21543f001539a6eb92b28db51719469"
 
   livecheck do
     url "https://redist.ctr-electronics.com/index.json"
@@ -18,21 +18,16 @@ class Corvus < Formula
     end
   end
 
-  bottle do
-    root_url "https://github.com/jonahsnider/homebrew-frc/releases/download/corvus-26.50.0"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe: "390c6507ae4bd6a5412c89f5165aade82506b3756449e4983c44fa0c8cec49fb"
-    sha256 cellar: :any_skip_relocation, sequoia:     "1d4b4c08a0f91bf63a05e231bab9e223127fd3312bd2d662f58524fffdeb1e6c"
-  end
 
   on_linux do
     on_intel do
-      url "https://redist.ctr-electronics.com/tools/corvus/26.1.3/corvus-26.1.3-linuxx86-64"
-      sha256 "43362684b40402205fa2027da231ef1c0b59b86ecdb0cec6a3e220739c462356"
+      url "https://redist.ctr-electronics.com/tools/corvus/26.70.0/corvus-26.70.0-linuxx86-64"
+      sha256 "aa95e7ece6e966cf3d922a16811c456d44d69555179e19d21860ed9b2563d457"
     end
 
     on_arm do
-      url "https://redist.ctr-electronics.com/tools/corvus/26.1.3/corvus-26.1.3-linuxarm64"
-      sha256 "2c61646cffbf8431db50dd370772a90c30a0a44bd95d21f04b622f77632bf063"
+      url "https://redist.ctr-electronics.com/tools/corvus/26.70.0/corvus-26.70.0-linuxarm64"
+      sha256 "010b658b1476c1e6cdab10fb992c0f6589a25a6f56dfaa05027cbd7305357379"
     end
   end
 
