@@ -19,6 +19,12 @@ class Owlet < Formula
     end
   end
 
+  bottle do
+    root_url "https://github.com/jonahsnider/homebrew-frc/releases/download/owlet-26.70.0"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "238acc26922dd12432501a7f8affc0fa4fd39f38abe0196ce874368e6fb58378"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "bdaff24832ce47899b55f5795e8e8c77403c755ac850e1ce96e48cc287c5ab5b"
+  end
+
   on_linux do
     on_intel do
       url "https://redist.ctr-electronics.com/tools/owlet/26.70.0/owlet-26.70.0-linuxx86-64?version=26.70.0"
