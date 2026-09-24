@@ -48,7 +48,7 @@ jobs:
         id: list-formulae
         # CTR formulae are updated together by the update-ctr-tools job.
         run: |
-          formulae=$(find Formula -maxdepth 1 -name "*.rb" -type f ! -name "corvus.rb" ! -name "owlet.rb" ! -name "passerine.rb" -exec basename {} .rb \; | sed 's/^/jonahsnider\/frc\//' | tr '\n' ' ')
+          formulae=$(find Formula -maxdepth 1 -name "*.rb" -type f ! -name "corvus.rb" ! -name "owlet.rb" ! -name "passerine.rb" ! -name "phoenix-diagnostic-server.rb" -exec basename {} .rb \; | sed 's/^/jonahsnider\/frc\//' | tr '\n' ' ')
           echo "formulae=$formulae" >> "$GITHUB_OUTPUT"
       - name: Bump packages
         uses: Homebrew/actions/bump-packages@1e34f2e2acaa766b7efacb8c26352e6abbb023f9 # 2026.09.13.1
@@ -96,7 +96,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$branch"
-          git add Formula/corvus.rb Formula/owlet.rb Formula/passerine.rb
+          git add Formula/corvus.rb Formula/owlet.rb Formula/passerine.rb Formula/phoenix-diagnostic-server.rb
           git commit -m "Update CTR tools: $UPDATE_SUMMARY"
           git push --set-upstream origin "$branch"
           gh pr create \

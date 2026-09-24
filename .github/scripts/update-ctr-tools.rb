@@ -11,8 +11,10 @@ class CtrToolsUpdater
   ROOT = File.expand_path("../..", __dir__).freeze
   INDEX_URL = "https://redist.ctr-electronics.com/index.json"
   PLATFORMS = %w[macosuniversal linuxx86-64 linuxarm64].freeze
+  LINUX_PLATFORMS = %w[linuxx86-64 linuxarm64].freeze
   REVISION_OVERRIDES = { "passerine@0.0.1" => 1 }.freeze
-  TOOLS = %w[corvus owlet passerine].freeze
+  TOOLS = %w[corvus owlet passerine phoenix-diagnostic-server].freeze
+  UPSTREAM_NAMES = { "phoenix-diagnostic-server" => "PhoenixDiagnosticsProgram" }.freeze
   VERSION_SCHEME = 1
 
   class << self
@@ -28,17 +30,25 @@ class CtrToolsUpdater
       contents[/^  revision (\d+)$/, 1].to_i
     end
 
+    def platforms(name)
+      (name == "phoenix-diagnostic-server") ? LINUX_PLATFORMS : PLATFORMS
+    end
+
+    def upstream_name(name)
+      UPSTREAM_NAMES.fetch(name, name)
+    end
+
     def formula_assets(name, contents)
       assets = {}
 
       contents.scan(/^([ \t]*)url "([^"]+)"\n\1sha256 "([0-9a-f]{64})"/) do |indent, url, sha256|
         match = Regexp.last_match
         uri = URI(url)
-        prefix = "/tools/#{name}/"
+        prefix = "/tools/#{upstream_name(name)}/"
         next if uri.host != "redist.ctr-electronics.com" || !uri.path.start_with?(prefix)
 
         version, filename = uri.path.delete_prefix(prefix).split("/", 2)
-        platform = PLATFORMS.find { |candidate| filename == "#{name}-#{version}-#{candidate}" }
+        platform = platforms(name).find { |candidate| filename == "#{upstream_name(name)}-#{version}-#{candidate}" }
         next unless platform
 
         raise "#{name}: duplicate #{platform} URL" if assets.key?(platform)
@@ -52,21 +62,21 @@ class CtrToolsUpdater
         }
       end
 
-      missing = PLATFORMS - assets.keys
+      missing = platforms(name) - assets.keys
       raise "#{name}: missing #{missing.join(", ")}" if missing.any?
 
       assets
     end
 
     def latest_release(index, name)
-      tool = index.fetch("Tools").find { |candidate| candidate["Name"] == name }
+      tool = index.fetch("Tools").find { |candidate| candidate["Name"] == upstream_name(name) }
       raise "#{name}: missing from #{INDEX_URL}" unless tool
 
       releases = tool.fetch("Items").select do |item|
         version = item.fetch("Version")
         next false if version.match?(/alpha|beta/i)
 
-        PLATFORMS.all? { |platform| item.fetch("Urls", {}).key?(platform) }
+        platforms(name).all? { |platform| item.fetch("Urls", {}).key?(platform) }
       end
 
       releases.max_by { |item| Gem::Version.new(item.fetch("Version")) } ||
@@ -137,7 +147,7 @@ class CtrToolsUpdater
         assets = formula_assets(name, contents)
         release = latest_release(index, name)
         version = release.fetch("Version")
-        expected_urls = PLATFORMS.to_h do |platform|
+        expected_urls = platforms(name).to_h do |platform|
           [platform, formula_url(release.fetch("Urls").fetch(platform), version, platform)]
         end
         expected_revision = REVISION_OVERRIDES.fetch("#{name}@#{version}", 0)
@@ -147,7 +157,7 @@ class CtrToolsUpdater
         revision_current = formula_revision(contents) == expected_revision
         next if urls_current && version_scheme_current?(contents) && revision_current
 
-        PLATFORMS.each do |platform|
+        platforms(name).each do |platform|
           asset = assets.fetch(platform)
           url = expected_urls.fetch(platform)
           replacement = <<~FORMULA.chomp
