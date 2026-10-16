@@ -1,9 +1,8 @@
 class Passerine < Formula
   desc "Convert MIDI files into CTR Electronics CHRP (.chrp) files"
   homepage "https://docs.ctr-electronics.com/cli-tools"
-  url "https://redist.ctr-electronics.com/tools/passerine/0.0.1/passerine-0.0.1-macosuniversal"
-  sha256 "801855cd2bcfaecb3bb3e6bff3a09d193a3a15191637de915f36b0d86e210d6f"
-  revision 1
+  url "https://redist.ctr-electronics.com/tools/passerine/1.0.0/passerine-1.0.0-macosuniversal"
+  sha256 "35573fb482f81ef50e67d066b77afd3c78461d556b78cc026072fa8f2d5e31b0"
   version_scheme 1
 
   livecheck do
@@ -21,20 +20,20 @@ class Passerine < Formula
   end
 
   bottle do
-    root_url "https://github.com/jonahsnider/homebrew-frc/releases/download/passerine-0.0.1_1"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "2d191e0bcea7a8940c173fdf4122c509872d151f8548289e7218785d5a0cc962"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "361b6c3a96bcfe3b6e61579f562d115c43293ddede7ea0d33b5091477707daa9"
+    root_url "https://github.com/jonahsnider/homebrew-frc/releases/download/passerine-1.0.0"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "deceff86a516fdba662b268c53b3f3cf113c8ec7a015ec3a84b196fa04fa73c3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "06597a0223bb8ee965165372b2696989ddcfc0147fc5a24c41414ddd6accca61"
   end
 
   on_linux do
     on_intel do
-      url "https://redist.ctr-electronics.com/tools/passerine/0.0.1/passerine-0.0.1-linuxx86-64?version=0.0.1"
-      sha256 "4eb2b763163d0def9191d6842c8f73d4d9cb7d7b24cbd6c5aaba9e2ffebb2f44"
+      url "https://redist.ctr-electronics.com/tools/passerine/1.0.0/passerine-1.0.0-linuxx86-64?version=1.0.0"
+      sha256 "16f8546cb54798b40be3e985e6134f6355cd962b5909e8699d5b388a3a51b8c4"
     end
 
     on_arm do
-      url "https://redist.ctr-electronics.com/tools/passerine/0.0.1/passerine-0.0.1-linuxarm64?version=0.0.1"
-      sha256 "82aa1e476ae65b0569bcc0e21cef24fb735deeb9ed74c12d160f22451b191440"
+      url "https://redist.ctr-electronics.com/tools/passerine/1.0.0/passerine-1.0.0-linuxarm64?version=1.0.0"
+      sha256 "7a249af07af0e7034aa870e7fe7e17b7f25e52a5d011c31d12913b1bb108fb77"
     end
   end
 
