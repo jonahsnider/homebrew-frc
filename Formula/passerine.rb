@@ -19,7 +19,6 @@ class Passerine < Formula
     end
   end
 
-
   on_linux do
     on_intel do
       url "https://redist.ctr-electronics.com/tools/passerine/1.0.0/passerine-1.0.0-linuxx86-64?version=1.0.0"
