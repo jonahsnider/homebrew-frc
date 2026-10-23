@@ -1,9 +1,9 @@
 cask "limelight-hardware-manager" do
-  version "2.0.12"
-  sha256 arm:          "d2c53820fd256261a665427000e73552e06506091a97b4c29d2451e135e59bf3",
-         intel:        "1e84d76475724059be5d3f3e38e5eff7c0cb00c1ae28a0bde660a6ae68e2abff",
-         arm64_linux:  "7a0efdc10ceffda6a8e06c69699181c0190e92437c4aff90db3c6394e96b5c34",
-         x86_64_linux: "24d23f144fef3d4e006cd1dfcfeeec3d217c1c05be2bb3329fdf8f5a33e2518e"
+  version "2.0.13"
+  sha256 arm:          "949d3d66e5d5863d246c0fe70ce354c61e4389ce5a392cac7affd7d2013fc280",
+         intel:        "4bbe4fe46369ee870666c5ae8acc798f06a03b3cf30bcfbbe1048595b7381b11",
+         arm64_linux:  "0b9a03a42ae64f8c0f94ae25822b65538001e3a932c147a9d61c721c355762bd",
+         x86_64_linux: "b96035f1e3326f0ddd7bffa608a83e0c6cbe940f0d6c673c78946b11e9b87ee9"
 
   on_macos do
     arch arm: "AppleSilicon", intel: "Intel"
