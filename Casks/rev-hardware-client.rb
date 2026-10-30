@@ -1,9 +1,9 @@
 cask "rev-hardware-client" do
   arch arm: "aarch64", intel: "amd64"
 
-  version "1.4.3"
-  sha256 arm:   "2c45dc7ba0206165dc134b2f5b83aeb6b713e7da447720fe04a04e03951561aa",
-         intel: "2641bc676371b3e88aaa0d0d1ae914d717812b2826ae94ebe5a2b2299b559c40"
+  version "1.4.4"
+  sha256 arm:   "406969340c991327cede91dd92f499b2c51fb405cb4780dfd76c11301ace7244",
+         intel: "0b0be4e2c6c3d37e8e65595f4a1b9b60a18015dca1215dfdacc15cf7f1a3f3bd"
 
   url "https://rhc2.revrobotics.com/download/rev-hardware-client-#{version}-mac-#{arch}.zip"
   name "REV Hardware Client 2"
