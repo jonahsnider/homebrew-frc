@@ -16,4 +16,4 @@ jobs:
       contents: read
       issues: read
       pull-requests: read
-    uses: jonahsnider/homebrew-tap/.github/workflows/homebrew-automerge-reusable.yml@main
+    uses: jonahsnider/homebrew-tap/.github/workflows/homebrew-automerge-reusable.yml@24ba4e0d1c13c2d5425d6a7520010548334d3e7d # main
