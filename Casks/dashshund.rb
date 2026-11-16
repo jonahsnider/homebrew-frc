@@ -10,6 +10,7 @@ cask "dashshund" do
   desc "FRC dashboard for viewing camera streams"
   homepage "https://github.com/jonahsnider/dashshund"
 
+  auto_updates true
   depends_on macos: :monterey
 
   app "Dashshund.app"
