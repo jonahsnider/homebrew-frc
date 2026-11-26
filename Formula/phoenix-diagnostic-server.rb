@@ -1,8 +1,8 @@
 class PhoenixDiagnosticServer < Formula
   desc "Allow Phoenix Tuner to manage CTR Electronics devices"
   homepage "https://docs.ctr-electronics.com/cli-tools"
-  url "https://redist.ctr-electronics.com/tools/PhoenixDiagnosticsProgram/26.3.0/PhoenixDiagnosticsProgram-26.3.0-linuxx86-64?version=26.3.0"
-  sha256 "c506fb0acc694015ac6f52f8385ae36965c011ba19fb4d5d6072181624ea846a"
+  url "https://redist.ctr-electronics.com/tools/PhoenixDiagnosticsProgram/26.3.1/PhoenixDiagnosticsProgram-26.3.1-linuxx86-64?version=26.3.1"
+  sha256 "dbaa53ff0f4db12d6204551e80b1be8be2c8965f1788218539ec955d8866e305"
   version_scheme 1
 
   livecheck do
@@ -19,12 +19,17 @@ class PhoenixDiagnosticServer < Formula
     end
   end
 
+  bottle do
+    root_url "https://github.com/jonahsnider/homebrew-frc/releases/download/phoenix-diagnostic-server-26.3.1"
+    sha256 cellar: :any, x86_64_linux: "297a56d414d0d20d3aaf5725b81f399190b5061059a0e7c8bd55088510df540f"
+  end
+
   depends_on :linux
 
   on_linux do
     on_arm do
-      url "https://redist.ctr-electronics.com/tools/PhoenixDiagnosticsProgram/26.3.0/PhoenixDiagnosticsProgram-26.3.0-linuxarm64?version=26.3.0"
-      sha256 "5125f84cbca6022e2fb0e12cbbb601a7f7f34be4e121581e62e5a9973e92de16"
+      url "https://redist.ctr-electronics.com/tools/PhoenixDiagnosticsProgram/26.3.1/PhoenixDiagnosticsProgram-26.3.1-linuxarm64?version=26.3.1"
+      sha256 "b060da6e7e30151c617d05b3ddab32486ec740495e4145a8b38207a7bf333a7f"
     end
   end
 
