@@ -19,6 +19,11 @@ class PhoenixDiagnosticServer < Formula
     end
   end
 
+  bottle do
+    root_url "https://github.com/jonahsnider/homebrew-frc/releases/download/phoenix-diagnostic-server-26.3.1"
+    sha256 cellar: :any, x86_64_linux: "297a56d414d0d20d3aaf5725b81f399190b5061059a0e7c8bd55088510df540f"
+  end
+
   depends_on :linux
 
   on_linux do
