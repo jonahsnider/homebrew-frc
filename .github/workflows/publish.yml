@@ -27,7 +27,7 @@ jobs:
       id-token: write
       issues: write
       pull-requests: write
-    uses: jonahsnider/homebrew-tap/.github/workflows/homebrew-publish-reusable.yml@21ae4ecdd54c527c67b08d00337f380378b01a79 # main
+    uses: jonahsnider/homebrew-tap/.github/workflows/homebrew-publish-reusable.yml@db8258665e62107c1c44e7b4a470ff35b93dd6c8 # main
     with:
       app_client_id: ${{ vars.BREW_COMMIT_CLIENT_ID }}
       head_sha: ${{ inputs.head_sha }}
